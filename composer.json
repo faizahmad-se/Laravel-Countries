@@ -3,9 +3,9 @@
     "description": "Seed and use mledoze/countries in Laravel.",
     "require": {
         "php": ">=5.5.9",
-        "draperstudio/laravel-service-provider": "~1.0",
-        "draperstudio/laravel-database": "~1.0",
-        "mledoze/countries": "~1.7"
+        "draperstudio/laravel-service-provider": "^1.0",
+        "draperstudio/laravel-database": "^1.0",
+        "mledoze/countries": "^1.7"
     },
     "autoload": {
         "psr-4": {
