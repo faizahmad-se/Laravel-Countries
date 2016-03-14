@@ -17,6 +17,7 @@
     "require": {
         "php": "^5.6 || ^7.0",
         "draperstudio/laravel-service-provider": "^0.1",
+        "draperstudio/eloquent-repositories": "^0.1",
         "mledoze/countries": "^1.7"
     },
     "require-dev": {
