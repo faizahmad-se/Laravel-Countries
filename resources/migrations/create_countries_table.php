@@ -11,9 +11,6 @@ use Illuminate\Database\Schema\Blueprint;
  */
 class CreateCountriesTable extends Migration
 {
-    /**
-     *
-     */
     public function up()
     {
         Schema::create('countries', function (Blueprint $table) {
@@ -43,9 +40,6 @@ class CreateCountriesTable extends Migration
         });
     }
 
-    /**
-     *
-     */
     public function down()
     {
         Schema::drop('countries');
