@@ -21,9 +21,6 @@ use DraperStudio\Eloquent\Repositories\AbstractRepository;
  */
 class CountryRepository extends AbstractRepository
 {
-    /**
-     *
-     */
     public function getModelClass()
     {
         return Country::class;

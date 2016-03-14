@@ -32,9 +32,6 @@ class SeedCountries extends Command
      */
     protected $description = 'Command description.';
 
-    /**
-     *
-     */
     public function fire()
     {
         DB::table('countries')->delete();
