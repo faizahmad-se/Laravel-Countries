@@ -1,21 +1,36 @@
 <?php
 
+/*
+ * This file is part of Laravel Countries.
+ *
+ * (c) DraperStudio <hello@draperstudio.tech>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace DraperStudio\Countries;
 
 use DraperStudio\Countries\Console\SeedCountries;
 use DraperStudio\Countries\Models\Country;
-use DraperStudio\ServiceProvider\ServiceProvider as BaseProvider;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 
-class ServiceProvider extends BaseProvider
+/**
+ * Class ServiceProvider.
+ *
+ * @author DraperStudio <hello@draperstudio.tech>
+ */
+class ServiceProvider extends \DraperStudio\ServiceProvider\ServiceProvider
 {
-    protected $packageName = 'countries';
-
+    /**
+     * Bootstrap the application services.
+     */
     public function boot()
     {
-        $this->setup(__DIR__)
-             ->publishMigrations();
+        parent::boot();
+
+        $this->publishMigrations();
 
         $app = $this->app;
 
@@ -37,8 +52,35 @@ class ServiceProvider extends BaseProvider
         }
     }
 
+    /**
+     * Register the application services.
+     */
     public function register()
     {
-        $this->commands(SeedCountries::class);
+        parent::register();
+
+        $this->app->singleton('command.countries.seed', function (Container $app) {
+             return new SeedCountries();
+         });
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return string[]
+     */
+    public function provides()
+    {
+        return array_merge(parent::provides(), ['command.countries.seed']);
+    }
+
+    /**
+     * Get the default package name.
+     *
+     * @return string
+     */
+    public function getPackageName()
+    {
+        return 'countries';
     }
 }
