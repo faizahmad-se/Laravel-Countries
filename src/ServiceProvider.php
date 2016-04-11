@@ -59,19 +59,7 @@ class ServiceProvider extends \DraperStudio\ServiceProvider\ServiceProvider
     {
         parent::register();
 
-        $this->app->singleton('command.countries.seed', function (Container $app) {
-             return new SeedCountries();
-         });
-    }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return string[]
-     */
-    public function provides()
-    {
-        return array_merge(parent::provides(), ['command.countries.seed']);
+        $this->commands(SeedCountries::class);
     }
 
     /**
