@@ -43,6 +43,6 @@ class SeedCountries extends Command
             Country::create($country);
         }
 
-        $this->getOutput()->writeln("<info>Seeded:</info> Countries");
+        $this->getOutput()->writeln('<info>Seeded:</info> Countries');
     }
 }
