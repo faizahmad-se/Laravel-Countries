@@ -1,9 +1,8 @@
 <?php
 
-namespace BrianFaust\Countries\Console;
+namespace BrianFaust\Countries;
 
 use DB;
-use BrianFaust\Countries\Models\Country;
 use Illuminate\Console\Command;
 
 class SeedCountries extends Command

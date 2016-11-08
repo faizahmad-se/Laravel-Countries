@@ -1,17 +1,12 @@
 <?php
 
-namespace BrianFaust\Countries\Repositories;
+namespace BrianFaust\Countries;
 
 use BrianFaust\Countries\Models\Country;
 use BrianFaust\Eloquent\Repositories\AbstractRepository;
 
 class CountryRepository extends AbstractRepository
 {
-    public function getModelClass()
-    {
-        return Country::class;
-    }
-
     /**
      * @param $value
      *
@@ -380,5 +375,13 @@ class CountryRepository extends AbstractRepository
     public function findManyByArea($value)
     {
         return $this->findManyBy('area', $value);
+    }
+
+    /**
+     * @return string
+     */
+    public function getModelClass()
+    {
+        return Country::class;
     }
 }

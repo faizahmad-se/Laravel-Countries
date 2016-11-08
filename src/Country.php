@@ -1,17 +1,12 @@
 <?php
 
-namespace BrianFaust\Countries\Models;
+namespace BrianFaust\Countries;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Country extends Model
 {
-    /**
-     * @var string
-     */
-    protected $table = 'countries';
-
     /**
      * @var array
      */
@@ -21,17 +16,17 @@ class Country extends Model
      * @var array
      */
     protected $casts = [
-        'name' => 'array',
-        'tld' => 'array',
-        'currency' => 'array',
-        'callingCode' => 'array',
+        'name'         => 'array',
+        'tld'          => 'array',
+        'currency'     => 'array',
+        'callingCode'  => 'array',
         'altSpellings' => 'array',
-        'languages' => 'array',
+        'languages'    => 'array',
         'translations' => 'array',
-        'latlng' => 'array',
-        'landlocked' => 'boolean',
-        'borders' => 'array',
-        'area' => 'integer',
+        'latlng'       => 'array',
+        'landlocked'   => 'boolean',
+        'borders'      => 'array',
+        'area'         => 'integer',
     ];
 
     /**
