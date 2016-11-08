@@ -12,14 +12,14 @@ And then include the service provider within `app/config/app.php`.
 
 ``` php
 'providers' => [
-    'BrianFaust\Countries\CountriesServiceProvider'
+    BrianFaust\Countries\CountriesServiceProvider::class
 ];
 ```
 
 To get started, you'll need to publish the vendor assets and migrate the countries table:
 
 ```bash
-php artisan vendor:publish && php artisan migrate
+php artisan vendor:publish --provider="BrianFaust\Countries\CountriesServiceProvider" && php artisan migrate
 ```
 
 Now you can seed the countries into the database like this.
