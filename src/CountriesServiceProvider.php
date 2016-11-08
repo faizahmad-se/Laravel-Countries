@@ -2,12 +2,11 @@
 
 namespace BrianFaust\Countries;
 
-use BrianFaust\Countries\Console\SeedCountries;
-use BrianFaust\Countries\Models\Country;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
+use BrianFaust\ServiceProvider\ServiceProvider;
 
-class ServiceProvider extends \BrianFaust\ServiceProvider\ServiceProvider
+class CountriesServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
