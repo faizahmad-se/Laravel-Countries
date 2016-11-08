@@ -12,7 +12,7 @@ And then include the service provider within `app/config/app.php`.
 
 ``` php
 'providers' => [
-    'BrianFaust\Countries\ServiceProvider'
+    'BrianFaust\Countries\CountriesServiceProvider'
 ];
 ```
 
