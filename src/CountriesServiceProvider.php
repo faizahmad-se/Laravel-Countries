@@ -34,6 +34,21 @@ class CountriesServiceProvider extends ServiceProvider
 
                 return $app->form->select($name, $countries, $selected, $options);
             });
+
+            $app->form->macro('selectCountryWithId', function ($name, $selected = null, $options = []) use ($app) {
+                $countries = Cache::rememberForever('brianfaust.countries.select.id.cca2', function () {
+                    $records = Country::get(['name', 'id']);
+
+                    $countries = new Collection();
+                    $records->map(function ($item) use (&$countries) {
+                        $countries[$item['id']] = $item['name']['official'];
+                    });
+
+                    return $countries->sort();
+                });
+
+                return $app->form->select($name, $countries, $selected, $options);
+            });
         }
     }
 
