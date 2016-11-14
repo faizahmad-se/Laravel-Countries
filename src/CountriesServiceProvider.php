@@ -22,14 +22,9 @@ class CountriesServiceProvider extends ServiceProvider
         if ($app->bound('form')) {
             $app->form->macro('selectCountry', function ($name, $selected = null, $options = []) use ($app) {
                 $countries = Cache::rememberForever('brianfaust.countries.select.name.cca2', function () {
-                    $records = Country::get(['name', 'cca2']);
-
-                    $countries = new Collection();
-                    $records->map(function ($item) use (&$countries) {
-                        $countries[$item['cca2']] = $item['name']['common'];
-                    });
-
-                    return $countries->sort();
+                    return Country::get(['name', 'cca2'])->mapWithKeys(function ($item) {
+                        return [$item['cca2'] => $item['name']['common']];
+                    })->sort();
                 });
 
                 return $app->form->select($name, $countries, $selected, $options);
@@ -37,14 +32,9 @@ class CountriesServiceProvider extends ServiceProvider
 
             $app->form->macro('selectCountryWithId', function ($name, $selected = null, $options = []) use ($app) {
                 $countries = Cache::rememberForever('brianfaust.countries.select.id.cca2', function () {
-                    $records = Country::get(['name', 'id']);
-
-                    $countries = new Collection();
-                    $records->map(function ($item) use (&$countries) {
-                        $countries[$item['id']] = $item['name']['common'];
-                    });
-
-                    return $countries->sort();
+                    return Country::get(['name', 'id'])->mapWithKeys(function ($item) {
+                        return [$item['id'] => $item['name']['common']];
+                    })->sort();
                 });
 
                 return $app->form->select($name, $countries, $selected, $options);
