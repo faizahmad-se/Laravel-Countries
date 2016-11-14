@@ -1,33 +1,59 @@
 <?php
 
+/*
+ * This file is part of Laravel Countries.
+ *
+ * (c) Brian Faust <hello@brianfaust.de>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace BrianFaust\Countries;
 
-use DB;
 use Illuminate\Console\Command;
 
 class SeedCountries extends Command
 {
     /**
+     * The name and signature of the console command.
+     *
      * @var string
      */
     protected $signature = 'countries:seed';
 
     /**
+     * The console command description.
+     *
      * @var string
      */
     protected $description = 'Command description.';
 
-    public function fire()
+    /**
+     * Execute the console command.
+     */
+    public function handle()
     {
-        DB::table('countries')->delete();
+        $model = $this->getModel();
+        $model->truncate();
 
         $data = base_path('vendor/mledoze/countries/dist/countries.json');
         $data = json_decode(file_get_contents($data), true);
 
         foreach ($data as $country) {
-            Country::create($country);
+            $model->create($country);
         }
 
         $this->getOutput()->writeln('<info>Seeded:</info> Countries');
+    }
+
+    /**
+     * @return \Illuminate\Databse\Eloquent\Model
+     */
+    private function getModel()
+    {
+        $model = config('countries.model');
+
+        return new $model();
     }
 }
