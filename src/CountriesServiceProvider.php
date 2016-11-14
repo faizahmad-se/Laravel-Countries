@@ -26,7 +26,7 @@ class CountriesServiceProvider extends ServiceProvider
 
                     $countries = new Collection();
                     $records->map(function ($item) use (&$countries) {
-                        $countries[$item['cca2']] = $item['name']['official'];
+                        $countries[$item['cca2']] = $item['name']['common'];
                     });
 
                     return $countries->sort();
@@ -41,7 +41,7 @@ class CountriesServiceProvider extends ServiceProvider
 
                     $countries = new Collection();
                     $records->map(function ($item) use (&$countries) {
-                        $countries[$item['id']] = $item['name']['official'];
+                        $countries[$item['id']] = $item['name']['common'];
                     });
 
                     return $countries->sort();
