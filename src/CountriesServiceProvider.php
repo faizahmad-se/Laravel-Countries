@@ -25,6 +25,8 @@ class CountriesServiceProvider extends ServiceProvider
 
         $this->publishMigrations();
 
+        $this->publishConfig();
+
         $app = $this->app;
 
         if ($app->bound('form')) {
@@ -56,6 +58,8 @@ class CountriesServiceProvider extends ServiceProvider
     public function register()
     {
         parent::register();
+
+        $this->mergeConfig();
 
         $this->commands(SeedCountries::class);
     }
