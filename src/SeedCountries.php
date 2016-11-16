@@ -20,7 +20,7 @@ class SeedCountries extends Command
      *
      * @var string
      */
-    protected $signature = 'countries:seed';
+    protected $signature = 'seed:countries';
 
     /**
      * The console command description.
