@@ -35,7 +35,6 @@ class SeedCountries extends Command
     public function handle()
     {
         $model = $this->getModel();
-        $model->truncate();
 
         $data = base_path('vendor/mledoze/countries/dist/countries.json');
         $data = json_decode(file_get_contents($data), true);
