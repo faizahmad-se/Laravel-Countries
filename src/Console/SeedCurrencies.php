@@ -13,6 +13,7 @@ namespace BrianFaust\Countries\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Databse\Eloquent\Model;
+use NumberFormatter;
 
 class SeedCurrencies extends Command
 {
@@ -71,7 +72,7 @@ class SeedCurrencies extends Command
      */
     private function getModel()
     {
-        $model = config('countries.models.currency');
+        $model = config('countries.models.country');
 
         return new $model();
     }
