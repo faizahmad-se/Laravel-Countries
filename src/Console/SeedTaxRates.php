@@ -47,7 +47,7 @@ class SeedTaxRates extends Command
                 $rate = $data[$country['name']['common']];
             }
 
-            $country->taxrates()->create([
+            $country->taxrate()->create([
                 'rate'       => $rate,
                 'percentage' => $rate * 100,
             ]);
