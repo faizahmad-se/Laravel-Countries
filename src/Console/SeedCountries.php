@@ -9,9 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace BrianFaust\Countries;
+namespace BrianFaust\Countries\Console;
 
 use Illuminate\Console\Command;
+use Illuminate\Databse\Eloquent\Model;
 
 class SeedCountries extends Command
 {
@@ -27,10 +28,12 @@ class SeedCountries extends Command
      *
      * @var string
      */
-    protected $description = 'Command description.';
+    protected $description = 'Command description';
 
     /**
      * Execute the console command.
+     *
+     * @return mixed
      */
     public function handle()
     {
@@ -51,7 +54,7 @@ class SeedCountries extends Command
      */
     private function getModel()
     {
-        $model = config('countries.model');
+        $model = config('countries.models.country');
 
         return new $model();
     }

@@ -11,7 +11,6 @@
 
 namespace BrianFaust\Countries;
 
-use Illuminate\Support\Facades\Cache;
 use BrianFaust\ServiceProvider\ServiceProvider;
 
 class CountriesServiceProvider extends ServiceProvider
@@ -27,29 +26,7 @@ class CountriesServiceProvider extends ServiceProvider
 
         $this->publishConfig();
 
-        $app = $this->app;
-
-        if ($app->bound('form')) {
-            $app->form->macro('selectCountry', function ($name, $selected = null, $options = []) use ($app) {
-                $countries = Cache::rememberForever('brianfaust.countries.select.name.cca2', function () {
-                    return Country::get(['name', 'cca2'])->mapWithKeys(function ($item) {
-                        return [$item['cca2'] => $item['name']['common']];
-                    })->sort();
-                });
-
-                return $app->form->select($name, $countries, $selected, $options);
-            });
-
-            $app->form->macro('selectCountryWithId', function ($name, $selected = null, $options = []) use ($app) {
-                $countries = Cache::rememberForever('brianfaust.countries.select.id.cca2', function () {
-                    return Country::get(['name', 'id'])->mapWithKeys(function ($item) {
-                        return [$item['id'] => $item['name']['common']];
-                    })->sort();
-                });
-
-                return $app->form->select($name, $countries, $selected, $options);
-            });
-        }
+        new Macros($this->app);
     }
 
     /**
@@ -61,7 +38,12 @@ class CountriesServiceProvider extends ServiceProvider
 
         $this->mergeConfig();
 
-        $this->commands(SeedCountries::class);
+        $this->commands([
+            Console\SeedCountries::class,
+            Console\SeedCurrencies::class,
+            Console\SeedTimezones::class,
+            Console\SeedTaxRates::class,
+        ]);
     }
 
     /**

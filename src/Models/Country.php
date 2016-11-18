@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace BrianFaust\Countries;
+namespace BrianFaust\Countries\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -17,11 +17,35 @@ use Illuminate\Database\Eloquent\Model;
 class Country extends Model
 {
     /**
+     * The attributes that are mass assignable.
+     *
      * @var array
      */
-    protected $guarded = ['id', 'created_at', 'updated_at'];
+    protected $fillable = [
+        'name',
+        'tld',
+        'cca2',
+        'ccn3',
+        'cca3',
+        'cioc',
+        'currency',
+        'callingCode',
+        'capital',
+        'altSpellings',
+        'region',
+        'subregion',
+        'languages',
+        'translations',
+        'latlng',
+        'demonym',
+        'landlocked',
+        'borders',
+        'area',
+    ];
 
     /**
+     * The attributes that should be cast to native types.
+     *
      * @var array
      */
     protected $casts = [
@@ -37,6 +61,30 @@ class Country extends Model
         'borders'      => 'array',
         'area'         => 'integer',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function currencies()
+    {
+        return $this->hasMany(config('countries.models.currency'));
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function timezones()
+    {
+        return $this->hasMany(config('countries.models.timezone'));
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function taxrate()
+    {
+        return $this->hasOne(config('countries.models.taxrate'));
+    }
 
     /**
      * @param Builder $query
