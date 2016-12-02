@@ -11,9 +11,7 @@ $ composer require faustbrian/laravel-countries
 And then include the service provider within `app/config/app.php`.
 
 ``` php
-'providers' => [
-    BrianFaust\Countries\CountriesServiceProvider::class
-];
+BrianFaust\Countries\CountriesServiceProvider::class
 ```
 
 To get started, you'll need to publish the vendor assets and migrate the countries table:
@@ -31,8 +29,7 @@ php artisan countries:seed
 ## Usage
 
 ``` php
-$skeleton = new League\Skeleton();
-echo $skeleton->echoPhrase('Hello, League!');
+...
 ```
 
 ## Security
