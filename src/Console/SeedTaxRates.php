@@ -12,7 +12,6 @@
 namespace BrianFaust\Countries\Console;
 
 use Illuminate\Console\Command;
-use Illuminate\Databse\Eloquent\Model;
 
 class SeedTaxRates extends Command
 {

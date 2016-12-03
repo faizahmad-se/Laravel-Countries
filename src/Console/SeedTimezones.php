@@ -11,10 +11,9 @@
 
 namespace BrianFaust\Countries\Console;
 
-use Illuminate\Console\Command;
-use Illuminate\Databse\Eloquent\Model;
 use DateTime;
 use DateTimeZone;
+use Illuminate\Console\Command;
 
 class SeedTimezones extends Command
 {
