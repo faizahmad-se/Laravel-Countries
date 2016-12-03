@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace BrianFaust\Countries\Console;
 
 use DateTime;
@@ -61,7 +63,7 @@ class SeedTimezones extends Command
      *
      * @return string
      */
-    private function offsetGmt(string $timezone) : string
+    private function offsetGmt(string $timezone): string
     {
         $offset = $this->offsetSeconds($timezone);
         $offset = gmdate('H:i', $offset);
@@ -76,7 +78,7 @@ class SeedTimezones extends Command
      *
      * @return int
      */
-    private function offsetHours(string $timezone) : int
+    private function offsetHours(string $timezone): int
     {
         return $this->offsetSeconds($timezone) / 3600;
     }
@@ -88,7 +90,7 @@ class SeedTimezones extends Command
      *
      * @return int
      */
-    private function offsetSeconds(string $timezone) : int
+    private function offsetSeconds(string $timezone): int
     {
         $dtz = new DateTimeZone($timezone);
 

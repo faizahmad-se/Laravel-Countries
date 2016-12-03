@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace BrianFaust\Countries;
 
 use BrianFaust\ServiceProvider\ServiceProvider;
@@ -18,7 +20,7 @@ class CountriesServiceProvider extends ServiceProvider
     /**
      * Bootstrap the application services.
      */
-    public function boot()
+    public function boot(): void
     {
         parent::boot();
 
@@ -32,7 +34,7 @@ class CountriesServiceProvider extends ServiceProvider
     /**
      * Register the application services.
      */
-    public function register()
+    public function register(): void
     {
         parent::register();
 
@@ -51,7 +53,7 @@ class CountriesServiceProvider extends ServiceProvider
      *
      * @return string
      */
-    public function getPackageName()
+    public function getPackageName(): string
     {
         return 'countries';
     }

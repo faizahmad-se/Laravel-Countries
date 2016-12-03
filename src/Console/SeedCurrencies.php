@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace BrianFaust\Countries\Console;
 
 use Illuminate\Console\Command;
@@ -59,7 +61,7 @@ class SeedCurrencies extends Command
      *
      * @return string
      */
-    private function getCurrencySymbol(string $currencyCode, string $locale) : string
+    private function getCurrencySymbol(string $currencyCode, string $locale): string
     {
         $formatter = new NumberFormatter($locale.'@currency='.$currencyCode, NumberFormatter::CURRENCY);
 
