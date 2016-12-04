@@ -11,19 +11,12 @@
 
 declare(strict_types=1);
 
-/*
- * This file is part of Laravel Countries.
- *
- * (c) Brian Faust <hello@brianfaust.de>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace BrianFaust\Countries\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Country extends Model
 {
@@ -76,23 +69,23 @@ class Country extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function currencies()
+    public function currencies(): HasMany
     {
         return $this->hasMany(config('countries.models.currency'));
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function timezones()
+    public function timezones(): HasMany
     {
         return $this->hasMany(config('countries.models.timezone'));
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function taxrate()
+    public function taxrate(): HasOne
     {
         return $this->hasOne(config('countries.models.taxrate'));
     }

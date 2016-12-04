@@ -11,18 +11,10 @@
 
 declare(strict_types=1);
 
-/*
- * This file is part of Laravel Countries.
- *
- * (c) Brian Faust <hello@brianfaust.de>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace BrianFaust\Countries\Console;
 
 use Illuminate\Console\Command;
+use Illuminate\Database\Eloquent\Model;
 
 class SeedCountries extends Command
 {
@@ -45,7 +37,7 @@ class SeedCountries extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         $model = $this->getModel();
 
@@ -62,7 +54,7 @@ class SeedCountries extends Command
     /**
      * @return \Illuminate\Databse\Eloquent\Model
      */
-    private function getModel()
+    private function getModel(): Model
     {
         $model = config('countries.models.country');
 

@@ -11,19 +11,11 @@
 
 declare(strict_types=1);
 
-/*
- * This file is part of Laravel Countries.
- *
- * (c) Brian Faust <hello@brianfaust.de>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace BrianFaust\Countries\Console;
 
 use Illuminate\Console\Command;
 use NumberFormatter;
+use Illuminate\Database\Eloquent\Model;
 
 class SeedCurrencies extends Command
 {
@@ -46,7 +38,7 @@ class SeedCurrencies extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         foreach ($this->getModel()->all() as $country) {
             if (head($country->currency)) {
@@ -80,7 +72,7 @@ class SeedCurrencies extends Command
     /**
      * @return \Illuminate\Databse\Eloquent\Model
      */
-    private function getModel()
+    private function getModel(): Model
     {
         $model = config('countries.models.country');
 

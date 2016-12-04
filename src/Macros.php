@@ -11,15 +11,6 @@
 
 declare(strict_types=1);
 
-/*
- * This file is part of Laravel Countries.
- *
- * (c) Brian Faust <hello@brianfaust.de>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace BrianFaust\Countries;
 
 use Illuminate\Support\Facades\Cache;
@@ -32,7 +23,7 @@ class Macros
         $this->selectCountryWithId($app);
     }
 
-    public function selectCountry($app)
+    public function selectCountry($app): void
     {
         $app->form->macro('selectCountry', function ($name, $selected = null, $options = []) use ($app) {
             $countries = Cache::rememberForever('brianfaust.countries.select.name.cca2', function () {
@@ -45,7 +36,7 @@ class Macros
         });
     }
 
-    public function selectCountryWithId($app)
+    public function selectCountryWithId($app): void
     {
         $app->form->macro('selectCountryWithId', function ($name, $selected = null, $options = []) use ($app) {
             $countries = Cache::rememberForever('brianfaust.countries.select.id.cca2', function () {
