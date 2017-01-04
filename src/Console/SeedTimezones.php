@@ -76,7 +76,7 @@ class SeedTimezones extends Command
     private function offsetGmt(string $timezone): string
     {
         $offset = $this->offsetSeconds($timezone);
-        $offset = gmdate('H:i', $offset);
+        $offset = gmdate('H:i', (int) $offset);
 
         return 'GMT'.($offset < 0 ? $offset : '+'.$offset);
     }
@@ -88,7 +88,7 @@ class SeedTimezones extends Command
      *
      * @return int
      */
-    private function offsetHours(string $timezone): int
+    private function offsetHours(string $timezone): float
     {
         return $this->offsetSeconds($timezone) / 3600;
     }
@@ -100,7 +100,7 @@ class SeedTimezones extends Command
      *
      * @return int
      */
-    private function offsetSeconds(string $timezone): int
+    private function offsetSeconds(string $timezone): float
     {
         $dtz = new DateTimeZone($timezone);
 
