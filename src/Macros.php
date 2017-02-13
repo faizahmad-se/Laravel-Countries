@@ -28,8 +28,10 @@ class Macros
 {
     public function __construct($app)
     {
-        $this->selectCountry($app);
-        $this->selectCountryWithId($app);
+        if (array_key_exists('form', $app)) {
+            $this->selectCountry($app);
+            $this->selectCountryWithId($app);
+        }
     }
 
     public function selectCountry($app): void
