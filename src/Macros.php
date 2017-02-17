@@ -28,7 +28,7 @@ class Macros
 {
     public function __construct($app)
     {
-        if (array_key_exists('form', $app)) {
+        if (class_exists('Collective\Html\FormBuilder')) {
             $this->selectCountry($app);
             $this->selectCountryWithId($app);
         }
