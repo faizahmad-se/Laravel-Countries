@@ -1,8 +1,5 @@
 <?php
 
-
-declare(strict_types=1);
-
 /*
  * This file is part of Laravel Countries.
  *
@@ -12,7 +9,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace BrianFaust\Countries\Console;
+namespace BrianFaust\Countries\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Model;
@@ -38,7 +35,7 @@ class SeedTaxRates extends Command
      *
      * @return mixed
      */
-    public function handle(): void
+    public function handle()
     {
         $data = base_path('vendor/faustbrian/laravel-countries/resources/data/taxrates.json');
         $data = json_decode(file_get_contents($data), true);
@@ -51,7 +48,7 @@ class SeedTaxRates extends Command
             }
 
             $country->taxrate()->create([
-                'rate'       => $rate,
+                'rate' => $rate,
                 'percentage' => $rate * 100,
             ]);
         }

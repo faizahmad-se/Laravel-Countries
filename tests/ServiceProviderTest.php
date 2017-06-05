@@ -1,8 +1,5 @@
 <?php
 
-
-declare(strict_types=1);
-
 /*
  * This file is part of Laravel Countries.
  *
@@ -14,7 +11,7 @@ declare(strict_types=1);
 
 namespace BrianFaust\Tests\Countries;
 
-use BrianFaust\Countries\Console\SeedCountries;
+use BrianFaust\Countries\Console\Commands\SeedCountries;
 use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 
 class ServiceProviderTest extends AbstractTestCase

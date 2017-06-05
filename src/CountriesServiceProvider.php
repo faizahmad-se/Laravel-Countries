@@ -1,8 +1,5 @@
 <?php
 
-
-declare(strict_types=1);
-
 /*
  * This file is part of Laravel Countries.
  *
@@ -14,20 +11,24 @@ declare(strict_types=1);
 
 namespace BrianFaust\Countries;
 
-use BrianFaust\ServiceProvider\AbstractServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
-class CountriesServiceProvider extends AbstractServiceProvider
+class CountriesServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
      */
-    public function boot(): void
+    public function boot()
     {
         parent::boot();
 
-        $this->publishMigrations();
+        $this->publishes([
+            __DIR__.'/../database/migrations' => database_path('migrations'),
+        ], 'migrations');
 
-        $this->publishConfig();
+        $this->publishes([
+            __DIR__.'/../config/laravel-countries.php' => config_path('laravel-countries.php'),
+        ], 'config');
 
         new Macros($this->app);
     }
@@ -35,27 +36,15 @@ class CountriesServiceProvider extends AbstractServiceProvider
     /**
      * Register the application services.
      */
-    public function register(): void
+    public function register()
     {
-        parent::register();
-
-        $this->mergeConfig();
+        $this->mergeConfigFrom(__DIR__.'/../config/laravel-countries.php', 'laravel-countries');
 
         $this->commands([
-            Console\SeedCountries::class,
-            Console\SeedCurrencies::class,
-            Console\SeedTimezones::class,
-            Console\SeedTaxRates::class,
+            Console\Commands\SeedCountries::class,
+            Console\Commands\SeedCurrencies::class,
+            Console\Commands\SeedTimezones::class,
+            Console\Commands\SeedTaxRates::class,
         ]);
-    }
-
-    /**
-     * Get the default package name.
-     *
-     * @return string
-     */
-    public function getPackageName(): string
-    {
-        return 'countries';
     }
 }

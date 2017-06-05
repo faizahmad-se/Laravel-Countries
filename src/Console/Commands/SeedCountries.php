@@ -1,8 +1,5 @@
 <?php
 
-
-declare(strict_types=1);
-
 /*
  * This file is part of Laravel Countries.
  *
@@ -12,7 +9,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace BrianFaust\Countries\Console;
+namespace BrianFaust\Countries\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Model;
@@ -38,7 +35,7 @@ class SeedCountries extends Command
      *
      * @return mixed
      */
-    public function handle(): void
+    public function handle()
     {
         $model = $this->getModel();
 

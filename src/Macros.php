@@ -1,8 +1,5 @@
 <?php
 
-
-declare(strict_types=1);
-
 /*
  * This file is part of Laravel Countries.
  *
@@ -26,7 +23,7 @@ class Macros
         }
     }
 
-    public function selectCountry($app): void
+    public function selectCountry($app)
     {
         $app->form->macro('selectCountry', function ($name, $selected = null, $options = []) use ($app) {
             $countries = Cache::rememberForever('brianfaust.countries.select.name.cca2', function () {
@@ -39,7 +36,7 @@ class Macros
         });
     }
 
-    public function selectCountryWithId($app): void
+    public function selectCountryWithId($app)
     {
         $app->form->macro('selectCountryWithId', function ($name, $selected = null, $options = []) use ($app) {
             $countries = Cache::rememberForever('brianfaust.countries.select.id.cca2', function () {

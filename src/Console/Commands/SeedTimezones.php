@@ -1,8 +1,5 @@
 <?php
 
-
-declare(strict_types=1);
-
 /*
  * This file is part of Laravel Countries.
  *
@@ -12,7 +9,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace BrianFaust\Countries\Console;
+namespace BrianFaust\Countries\Console\Commands;
 
 use DateTime;
 use DateTimeZone;
@@ -40,16 +37,16 @@ class SeedTimezones extends Command
      *
      * @return mixed
      */
-    public function handle(): void
+    public function handle()
     {
         foreach ($this->getModel()->all() as $country) {
             $timezones = DateTimeZone::listIdentifiers(DateTimeZone::PER_COUNTRY, $country->cca2);
 
             foreach ($timezones as $timezone) {
                 $country->timezones()->create([
-                    'name'           => $timezone,
-                    'offset_gmt'     => $this->offsetGmt($timezone),
-                    'offset_hours'   => $this->offsetHours($timezone),
+                    'name' => $timezone,
+                    'offset_gmt' => $this->offsetGmt($timezone),
+                    'offset_hours' => $this->offsetHours($timezone),
                     'offset_seconds' => $this->offsetSeconds($timezone),
                 ]);
             }
