@@ -37,7 +37,7 @@ class SeedTaxRates extends Command
      */
     public function handle()
     {
-        $data = base_path('vendor/faustbrian/laravel-countries/resources/data/taxrates.json');
+        $data = base_path('vendor/faustbrian/laravel-countries/data/taxrates.json');
         $data = json_decode(file_get_contents($data), true);
 
         foreach ($this->getModel()->all() as $country) {
@@ -61,7 +61,7 @@ class SeedTaxRates extends Command
      */
     private function getModel(): Model
     {
-        $model = config('countries.models.country');
+        $model = config('laravel-countries.models.country');
 
         return new $model();
     }

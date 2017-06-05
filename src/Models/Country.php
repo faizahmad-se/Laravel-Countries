@@ -68,7 +68,7 @@ class Country extends Model
      */
     public function currencies(): HasMany
     {
-        return $this->hasMany(config('countries.models.currency'));
+        return $this->hasMany(config('laravel-countries.models.currency'));
     }
 
     /**
@@ -76,7 +76,7 @@ class Country extends Model
      */
     public function timezones(): HasMany
     {
-        return $this->hasMany(config('countries.models.timezone'));
+        return $this->hasMany(config('laravel-countries.models.timezone'));
     }
 
     /**
@@ -84,7 +84,7 @@ class Country extends Model
      */
     public function taxrate(): HasOne
     {
-        return $this->hasOne(config('countries.models.taxrate'));
+        return $this->hasOne(config('laravel-countries.models.taxrate'));
     }
 
     /**

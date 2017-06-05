@@ -28,6 +28,6 @@ class Currency extends Model
      */
     public function country(): BelongsTo
     {
-        return $this->belongsTo(config('countries.models.country'));
+        return $this->belongsTo(config('laravel-countries.models.country'));
     }
 }
