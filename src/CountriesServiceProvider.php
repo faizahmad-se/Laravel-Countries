@@ -20,8 +20,6 @@ class CountriesServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        parent::boot();
-
         $this->publishes([
             __DIR__.'/../database/migrations' => database_path('migrations'),
         ], 'migrations');
