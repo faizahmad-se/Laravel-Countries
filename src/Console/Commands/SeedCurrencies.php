@@ -43,7 +43,7 @@ class SeedCurrencies extends Command
                 $code = head($country->currency);
 
                 $country->currencies()->create([
-                    'code'   => $code,
+                    'code' => $code,
                     'symbol' => $this->getCurrencySymbol($code, $country->cca2),
                 ]);
             }

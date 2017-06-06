@@ -48,7 +48,7 @@ class SeedTaxRates extends Command
             }
 
             $country->taxrate()->create([
-                'rate'       => $rate,
+                'rate' => $rate,
                 'percentage' => $rate * 100,
             ]);
         }

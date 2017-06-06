@@ -50,17 +50,17 @@ class Country extends Model
      * @var array
      */
     protected $casts = [
-        'name'         => 'array',
-        'tld'          => 'array',
-        'currency'     => 'array',
-        'callingCode'  => 'array',
+        'name' => 'array',
+        'tld' => 'array',
+        'currency' => 'array',
+        'callingCode' => 'array',
         'altSpellings' => 'array',
-        'languages'    => 'array',
+        'languages' => 'array',
         'translations' => 'array',
-        'latlng'       => 'array',
-        'landlocked'   => 'boolean',
-        'borders'      => 'array',
-        'area'         => 'integer',
+        'latlng' => 'array',
+        'landlocked' => 'boolean',
+        'borders' => 'array',
+        'area' => 'integer',
     ];
 
     /**

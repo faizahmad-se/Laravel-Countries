@@ -44,9 +44,9 @@ class SeedTimezones extends Command
 
             foreach ($timezones as $timezone) {
                 $country->timezones()->create([
-                    'name'           => $timezone,
-                    'offset_gmt'     => $this->offsetGmt($timezone),
-                    'offset_hours'   => $this->offsetHours($timezone),
+                    'name' => $timezone,
+                    'offset_gmt' => $this->offsetGmt($timezone),
+                    'offset_hours' => $this->offsetHours($timezone),
                     'offset_seconds' => $this->offsetSeconds($timezone),
                 ]);
             }

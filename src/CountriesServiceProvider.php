@@ -28,7 +28,7 @@ class CountriesServiceProvider extends ServiceProvider
             __DIR__.'/../config/laravel-countries.php' => config_path('laravel-countries.php'),
         ], 'config');
 
-        new Macros($this->app);
+        $this->registerMacros();
     }
 
     /**
@@ -38,6 +38,22 @@ class CountriesServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../config/laravel-countries.php', 'laravel-countries');
 
+        $this->registerCommands();
+    }
+
+    /**
+     * Register the macros.
+     */
+    private function registerMacros()
+    {
+        return new Macros($this->app);
+    }
+
+    /**
+     * Register the console commands.
+     */
+    private function registerCommands()
+    {
         $this->commands([
             Console\Commands\SeedCountries::class,
             Console\Commands\SeedCurrencies::class,
