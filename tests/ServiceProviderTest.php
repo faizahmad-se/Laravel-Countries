@@ -11,8 +11,8 @@
 
 namespace BrianFaust\Tests\Countries;
 
-use BrianFaust\Countries\Console\Commands\SeedCountries;
 use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
+use BrianFaust\Countries\Console\Commands\SeedCountries;
 
 class ServiceProviderTest extends AbstractTestCase
 {
