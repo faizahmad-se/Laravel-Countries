@@ -103,7 +103,7 @@ class SeedTimezones extends Command
      */
     private function getModel(): Model
     {
-        $model = config('countries.models.country');
+        $model = config('laravel-countries.models.country');
 
         return new $model();
     }
