@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace BrianFaust\Countries\Console\Commands;
 
-use NumberFormatter;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Model;
+use NumberFormatter;
 
 class SeedCurrencies extends Command
 {
